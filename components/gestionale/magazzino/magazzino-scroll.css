@@ -1,0 +1,64 @@
+/* Scrollbar Magazzino — thumb sempre visibile, dimensioni e hover coerenti */
+
+.magazzino-scroll-scope {
+  scrollbar-gutter: stable;
+}
+
+/* Scope + tutti i discendenti con overflow scroll */
+.magazzino-scroll-scope,
+.magazzino-scroll-scope * {
+  scrollbar-width: auto;
+  scrollbar-color: rgb(161 161 170 / 0.95) rgb(228 228 231 / 0.95);
+}
+
+.dark .magazzino-scroll-scope,
+.dark .magazzino-scroll-scope * {
+  scrollbar-color: rgb(113 113 122 / 0.95) rgb(39 39 42 / 0.95);
+}
+
+.magazzino-scroll-scope *::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 11px;
+  height: 11px;
+}
+
+.magazzino-scroll-scope *::-webkit-scrollbar-track {
+  background: rgb(228 228 231 / 0.95);
+  border-radius: 6px;
+  margin: 2px;
+}
+
+.magazzino-scroll-scope *::-webkit-scrollbar-thumb {
+  min-height: 36px;
+  background: rgb(161 161 170 / 0.92);
+  border-radius: 6px;
+  border: 2px solid rgb(228 228 231 / 0.95);
+  background-clip: padding-box;
+}
+
+.magazzino-scroll-scope *::-webkit-scrollbar-thumb:hover {
+  background: rgb(113 113 122 / 0.98);
+  border-color: rgb(212 212 216 / 0.98);
+}
+
+.magazzino-scroll-scope *::-webkit-scrollbar-thumb:active {
+  background: rgb(82 82 91 / 1);
+}
+
+.dark .magazzino-scroll-scope *::-webkit-scrollbar-track {
+  background: rgb(39 39 42 / 0.95);
+}
+
+.dark .magazzino-scroll-scope *::-webkit-scrollbar-thumb {
+  background: rgb(113 113 122 / 0.95);
+  border-color: rgb(39 39 42 / 0.95);
+}
+
+.dark .magazzino-scroll-scope *::-webkit-scrollbar-thumb:hover {
+  background: rgb(161 161 170 / 0.95);
+  border-color: rgb(63 63 70 / 0.98);
+}
+
+.dark .magazzino-scroll-scope *::-webkit-scrollbar-thumb:active {
+  background: rgb(212 212 216 / 0.35);
+}

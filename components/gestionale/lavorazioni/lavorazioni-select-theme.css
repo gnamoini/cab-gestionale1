@@ -1,0 +1,36 @@
+/**
+ * Select Lavorazioni — tema scuro (trigger + lista nativa dove il browser lo consente).
+ * Allineato al pattern Magazzino: radius, focus, contrasto alto.
+ */
+
+.lavorazioni-select-dk {
+  color-scheme: dark;
+}
+
+.lavorazioni-select-dk option,
+.lavorazioni-select-dk optgroup {
+  background-color: #18181b;
+  color: #fafafa;
+}
+
+.lavorazioni-select-dk option:checked {
+  background-color: #c2410c;
+  color: #fff7ed;
+  font-weight: 600;
+}
+
+.lavorazioni-select-dk option:hover {
+  background-color: #27272a;
+  color: #fafafa;
+}
+
+/* Date picker nativo (showPicker): coerenza dark + accento arancio */
+.lavorazioni-date-native {
+  color-scheme: dark;
+  accent-color: #f97316;
+}
+
+/* Host campo data: popup calendario nativo in tema scuro dove supportato */
+.lavorazioni-date-picker-host {
+  color-scheme: dark;
+}

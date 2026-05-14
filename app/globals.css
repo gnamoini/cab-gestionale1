@@ -1,0 +1,253 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* — CAB design tokens (SaaS enterprise, light) — */
+  --cab-bg-app: #f4f4f5;
+  --cab-bg: #fafafa;
+  --cab-surface: #ffffff;
+  --cab-surface-2: #f4f4f5;
+  --cab-card: #ffffff;
+  --cab-text: #18181b;
+  --cab-text-muted: #71717a;
+  --cab-border: #e4e4e7;
+  --cab-border-strong: #d4d4d8;
+  --cab-primary: #f97316;
+  --cab-primary-hover: #ea580c;
+  --cab-success: #059669;
+  --cab-warning: #d97706;
+  --cab-danger: #dc2626;
+  --cab-info: #0284c7;
+  --cab-hover: rgb(24 24 27 / 0.06);
+  --cab-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.05), 0 1px 3px rgb(0 0 0 / 0.08);
+  --cab-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --cab-overlay: rgb(0 0 0 / 0.48);
+  --cab-scrollbar-thumb: rgb(161 161 170 / 0.55);
+  --cab-scrollbar-thumb-hover: rgb(113 113 122 / 0.75);
+  --cab-scrollbar-track: rgb(244 244 245 / 0.65);
+
+  /* Retrocompatibilità Next / Tailwind theme */
+  --background: var(--cab-bg-app);
+  --foreground: var(--cab-text);
+  --ds-radius-lg: 0.75rem;
+  --ds-radius-xl: 0.875rem;
+  --ds-shadow-card: var(--cab-shadow-sm);
+  --ds-border-subtle: var(--cab-border);
+
+  /* Spacing scale (padding/gap/margin via arbitrary Tailwind) */
+  --ds-space-xs: 0.25rem;
+  --ds-space-sm: 0.5rem;
+  --ds-space-md: 0.75rem;
+  --ds-space-lg: 1rem;
+  --ds-space-xl: 1.5rem;
+  --ds-space-2xl: 2rem;
+}
+
+.dark {
+  --cab-bg-app: #09090b;
+  --cab-bg: #09090b;
+  --cab-surface: #18181b;
+  --cab-surface-2: #27272a;
+  --cab-card: #18181b;
+  --cab-text: #fafafa;
+  --cab-text-muted: #a1a1aa;
+  --cab-border: rgb(39 39 42);
+  --cab-border-strong: rgb(63 63 70);
+  --cab-primary: #fb923c;
+  --cab-primary-hover: #f97316;
+  --cab-success: #34d399;
+  --cab-warning: #fbbf24;
+  --cab-danger: #f87171;
+  --cab-info: #38bdf8;
+  --cab-hover: rgb(255 255 255 / 0.06);
+  --cab-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35), 0 0 0 1px rgb(255 255 255 / 0.04);
+  --cab-shadow-md: 0 8px 24px -4px rgb(0 0 0 / 0.45);
+  --cab-overlay: rgb(0 0 0 / 0.58);
+  --cab-scrollbar-thumb: rgb(82 82 91 / 0.6);
+  --cab-scrollbar-thumb-hover: rgb(113 113 122 / 0.85);
+  --cab-scrollbar-track: rgb(24 24 27 / 0.75);
+
+  --background: var(--cab-bg-app);
+  --foreground: var(--cab-text);
+  --ds-border-subtle: var(--cab-border);
+
+  --ds-space-xs: 0.25rem;
+  --ds-space-sm: 0.5rem;
+  --ds-space-md: 0.75rem;
+  --ds-space-lg: 1rem;
+  --ds-space-xl: 1.5rem;
+  --ds-space-2xl: 2rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Transizione tema centralizzata (180ms, curva “premium”). */
+html.cab-theme-transition {
+  transition: background-color 180ms cubic-bezier(0.22, 1, 0.36, 1), color 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.cab-theme-transition body {
+  transition: background-color 180ms cubic-bezier(0.22, 1, 0.36, 1), color 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.cab-theme-transition body * {
+  transition-property: background-color, color, border-color, border-top-color, border-right-color, border-bottom-color,
+    border-left-color, outline-color, box-shadow, text-decoration-color, fill, stroke, opacity, filter, column-rule-color;
+  transition-duration: 180ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.cab-theme-transition html::-webkit-scrollbar-thumb,
+html.cab-theme-transition body::-webkit-scrollbar-thumb,
+html.cab-theme-transition .gestionale-scrollbar::-webkit-scrollbar-thumb {
+  transition: background-color 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.cab-theme-transition html::-webkit-scrollbar-track,
+html.cab-theme-transition body::-webkit-scrollbar-track,
+html.cab-theme-transition .gestionale-scrollbar::-webkit-scrollbar-track {
+  transition: background-color 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes cab-drawer-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes cab-nav-drawer-in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0.65;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes cab-toast-in {
+  from {
+    transform: translateY(0.5rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.cab-toast-item {
+  animation: cab-toast-in 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cab-drawer-panel {
+  animation: cab-drawer-in 0.22s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.cab-nav-drawer-panel {
+  animation: cab-nav-drawer-in 0.24s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cab-drawer-panel,
+  .cab-nav-drawer-panel {
+    animation: none;
+  }
+  .cab-toast-item {
+    animation: none;
+  }
+  html.cab-theme-transition,
+  html.cab-theme-transition body,
+  html.cab-theme-transition body * {
+    transition-duration: 0ms !important;
+  }
+}
+
+html,
+body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--cab-scrollbar-thumb) var(--cab-scrollbar-track);
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: var(--cab-scrollbar-track);
+  border-radius: 9999px;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background-color: var(--cab-scrollbar-thumb);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--cab-scrollbar-thumb-hover);
+}
+
+body {
+  background: var(--cab-bg-app);
+  color: var(--cab-text);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+html.dark select option {
+  background-color: #18181b;
+  color: #fafafa;
+}
+
+@layer utilities {
+  /* Allineata a html/body: 10px, stessi colori light/dark. */
+  .gestionale-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--cab-scrollbar-thumb) var(--cab-scrollbar-track);
+  }
+  .gestionale-scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .gestionale-scrollbar::-webkit-scrollbar-track {
+    background: var(--cab-scrollbar-track);
+    border-radius: 9999px;
+  }
+  .gestionale-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--cab-scrollbar-thumb);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  .gestionale-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: var(--cab-scrollbar-thumb-hover);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe\:transition {
+    transition: none !important;
+  }
+}
